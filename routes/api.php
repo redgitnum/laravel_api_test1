@@ -15,13 +15,12 @@ use App\Http\Controllers\BaseController;
 |
 */
 
-header('Access-Control-Allow-Origin: http://localhost:8080');  
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, X-XSRF-Token, Origin');
-
+// header('Access-Control-Allow-Origin: *');  
+// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+// header('Access-Control-Allow-Headers: Content-Type, X-XSRF-Token, Origin');
 
 Route::get('/', [BaseController::class, 'index']);
-Route::post('/', [BaseController::class, 'store']);
-Route::post('/delete', [BaseController::class, 'delete']);
+Route::post('/add', [BaseController::class, 'store']);
+Route::delete('/delete', [BaseController::class, 'delete']);
 
 

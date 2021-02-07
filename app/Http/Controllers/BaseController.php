@@ -31,8 +31,7 @@ class BaseController extends Controller
 
     public function delete(Request $request)
     {
-        // dd($request);
-        return response('User Deleted', 200);
         Person::find($request->id)->delete();
+        return response('User Deleted', 200);
     }
 }
