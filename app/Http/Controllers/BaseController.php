@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewData;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class BaseController extends Controller
     public function index()
     {
         $people = Person::all();
-        return response()->json($people);
+        return response()->json($people, 200);
     }
 
     public function store(Request $request)
@@ -26,12 +27,20 @@ class BaseController extends Controller
             'surname' => $request->surname,
             'age' => $request->age,
             ]);
+        event(new NewData);
         return response('Person Saved', 201);
     }
 
     public function delete(Request $request)
     {
         Person::find($request->id)->delete();
-        return response('User Deleted', 200);
+        event(new NewData);
+        return response('Person Deleted', 200);
+    }
+
+    public function check()
+    {
+        event(new NewData);
+        return response('check data', 200);
     }
 }

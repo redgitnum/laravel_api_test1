@@ -20,6 +20,7 @@ use App\Http\Controllers\BaseController;
 // header('Access-Control-Allow-Headers: Content-Type, X-XSRF-Token, Origin');
 
 Route::get('/', [BaseController::class, 'index']);
+Route::get('/check', [BaseController::class, 'check']);
 Route::post('/add', [BaseController::class, 'store']);
 Route::delete('/delete', [BaseController::class, 'delete']);
 
